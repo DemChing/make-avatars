@@ -2,6 +2,7 @@
 Simple script to generate an avatar.
 
 ![demo](demo.jpg)
+Live [demo](https://demching.github.io/make-avatars/src/)
 
 ## License
 The scripts of this project is licensed under [MIT](LICENSE).

@@ -1,5 +1,5 @@
 const ASSET_DIR = '/dest';
-const JSON_PATH = `${ASSET_DIR}/index.json`;
+const ASSET_PATH = (/localhost|127\.0\.0\.1/.test(location.host) ? '' : 'https://raw.githubusercontent.com/DemChing/make-avatars/master') + ASSET_DIR;
 const Config = {};
 
 $(function () {
@@ -25,7 +25,7 @@ $(function () {
     const updateDownloadStatus = () => $dlStatus.text(`( ${assetDownloaded} / ${assetCount} )`);
 
     async function getData() {
-        let _base = await readJSON(JSON_PATH),
+        let _base = await readJSON(`${ASSET_PATH}/index.json`),
             promises = [];
 
         for (let type in _base) {
@@ -37,9 +37,9 @@ $(function () {
                     updateDownloadStatus();
 
                     let id = pad(i);
-                    Config[type][set][id] = await readJSON(`${ASSET_DIR}/${type}/${set}/${id}.json`);
+                    Config[type][set][id] = await readJSON(`${ASSET_PATH}/${type}/${set}/${id}.json`);
                     Config[type][set][id].image = new Image();
-                    Config[type][set][id].image.src = `${ASSET_DIR}/${type}/${set}/${id}.png`;
+                    Config[type][set][id].image.src = `${ASSET_PATH}/${type}/${set}/${id}.png`;
                     promises.push(new Promise(resolve => {
                         Config[type][set][id].image.onload = () => {
                             assetDownloaded++;
