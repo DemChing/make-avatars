@@ -1,0 +1,22 @@
+body {
+    font-family: arial;
+}
+
+h1 span {
+    color: #00f8;
+}
+
+h1 span:first-child {
+    color: #f008;
+    content: "Avatars";
+}
+
+#avatar {
+    display: block;
+    border: 1px solid;
+}
+
+.btn i.bi,
+.btn i.bi::before {
+    pointer-events: none;
+}
